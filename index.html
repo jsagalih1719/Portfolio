@@ -99,7 +99,7 @@
 
           // PENTING: Jika logo gambar gagal dimuat, gunakan teks 'JS.' sebagai fallback yang stabil.
           // Untuk menggunakan logo gambar, ganti URL di bawah ini dengan URL publik langsung (bukan halaman pratinjau Google Drive).
-          const reliableLogoUrl = "https://images.unsplash.com/photo-1575477813589-9e80b2a33633?q=80&w=32&auto=format&fit=crop"; // Contoh placeholder yang stabil
+          const reliableLogoUrl = "https://drive.google.com/file/d/1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h/view?usp=sharing"; // Contoh placeholder yang stabil
 
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
