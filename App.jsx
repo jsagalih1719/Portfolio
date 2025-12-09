@@ -200,7 +200,7 @@
                         <img 
                           src="https://drive.google.com/thumbnail?id=1DAEbtXmAe6JaBPt83HnYEHcKyRZ_oho8&sz=w1000" 
                           alt="Jauhari Sagalih" 
-                          className="object-cover h-[150vh] md:h-[130vh] w-auto grayscale hover:grayscale-0 transition-all duration-500 drop-shadow-2xl"
+                          className="object-cover h-[120vh] md:h-[130vh] w-auto grayscale hover:grayscale-0 transition-all duration-500 drop-shadow-2xl"
                           style={{ 
                             maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
                             WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
