@@ -100,7 +100,7 @@
           // const googleDriveLogoId = '1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h';
           
           // MENGGUNAKAN PLACEHOLDER YANG DIJAMIN BERHASIL DIMUAT UNTUK MENGUJI FITUR GAMBAR
-          const logoSrc = "js-01"; 
+          const logoSrc = "https://placehold.co/100x32/FFCC00/000000?text=LOGO"; 
 
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
@@ -116,32 +116,25 @@
               <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-neutral-900/90 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
                   
-                  {/* Logo - Sekarang menggunakan placeholder yang stabil */}
-                  <div className="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider cursor-pointer flex items-center">
-                    <img
-                        src={logoSrc} 
-                        alt="Jauhari Sagalih Logo"
-                        className="h-8 w-auto object-cover rounded-full"
-                        onError={(e) => {
-                            // Fallback ke teks 'JS.' jika placeholder gagal dimuat (sangat jarang terjadi).
-                            e.target.style.display = 'none';
-                            e.target.parentElement.innerHTML = '<span class="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider">JS.</span>';
-                        }}
-                    />
-                  </div>
-
-                  {/* Desktop Menu */}
+                  {/* DIPERBAIKI: Pindahkan menu desktop ke kiri, ganti posisi logo */}
+                  {/* Desktop Menu (Sekarang di Kiri) */}
                   <div className="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest text-gray-300">
                     <a href="#about" className="hover:text-yellow-400 transition-colors">About Me</a>
                     <a href="#experience" className="hover:text-yellow-400 transition-colors">Experience</a>
                     <a href="#skills" className="hover:text-yellow-400 transition-colors">Skills</a>
                     <a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a>
                   </div>
-
-                  {/* Mobile Menu Button */}
+                  
+                  {/* Tombol Menu Mobile (Tetap di Kanan) */}
                   <button className="md:hidden text-white" onClick={toggleMenu}>
                     {isMenuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
                   </button>
+                  
+                  {/* Tambahkan elemen spacer kosong jika menu desktop ditampilkan dan menu mobile disembunyikan
+                      untuk menjaga elemen menu mobile di kanan tetap di kanan (kecuali pada mobile). */}
+                  <div className="hidden md:block">
+                    {/* Placeholder kosong untuk menyeimbangkan layout di desktop */}
+                  </div>
                 </div>
 
                 {/* Mobile Menu Dropdown */}
