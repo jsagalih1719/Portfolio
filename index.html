@@ -6,7 +6,6 @@
     <title>Portfolio - Jauhari Sagalih</title>
     
     <!-- React & ReactDOM (Development Version) -->
-    <!-- DIPERBAIKI 1: Mengganti .Ds menjadi .js untuk memuat React Core dengan benar -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
@@ -97,9 +96,11 @@
 
           const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-          // PENTING: Jika logo gambar gagal dimuat, gunakan teks 'JS.' sebagai fallback yang stabil.
-          // Untuk menggunakan logo gambar, ganti URL di bawah ini dengan URL publik langsung (bukan halaman pratinjau Google Drive).
-          const reliableLogoUrl = "https://drive.google.com/file/d/1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h/view?usp=sharing"; // Contoh placeholder yang stabil
+          // URL logo yang Anda berikan (untuk referensi)
+          // const googleDriveLogoId = '1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h';
+          
+          // MENGGUNAKAN PLACEHOLDER YANG DIJAMIN BERHASIL DIMUAT UNTUK MENGUJI FITUR GAMBAR
+          const logoSrc = "https://placehold.co/100x32/FFCC00/000000?text=LOGO"; 
 
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
@@ -114,24 +115,19 @@
               {/* Navigation */}
               <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-neutral-900/90 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
-                  {/* Logo - DIKEMBALIKAN ke teks asli yang stabil */}
-                  <div className="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider cursor-pointer">
-                    JS.
-                    {/* Jika Anda ingin mencoba lagi dengan gambar:
+                  
+                  {/* Logo - Sekarang menggunakan placeholder yang stabil */}
+                  <div className="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider cursor-pointer flex items-center">
                     <img
-                        src={reliableLogoUrl} // Ganti reliableLogoUrl dengan URL gambar Anda yang benar-benar publik
+                        src={logoSrc} 
                         alt="Jauhari Sagalih Logo"
-                        className="header-logo-img"
+                        className="h-8 w-auto object-cover rounded-full"
                         onError={(e) => {
+                            // Fallback ke teks 'JS.' jika placeholder gagal dimuat (sangat jarang terjadi).
                             e.target.style.display = 'none';
-                            const parent = e.target.parentElement;
-                            const textFallback = document.createElement('div');
-                            textFallback.className = "text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider";
-                            textFallback.textContent = 'JS.';
-                            parent.appendChild(textFallback);
+                            e.target.parentElement.innerHTML = '<span class="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider">JS.</span>';
                         }}
                     />
-                    */}
                   </div>
 
                   {/* Desktop Menu */}
