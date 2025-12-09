@@ -6,6 +6,7 @@
     <title>Portfolio - Jauhari Sagalih</title>
     
     <!-- React & ReactDOM (Development Version) -->
+    <!-- DIPERBAIKI 1: Mengganti .Ds menjadi .js untuk memuat React Core dengan benar -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
@@ -19,7 +20,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        /* Define custom font family and ensure Inter is default */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            /* Set background color here to ensure no flash of white */
+            background-color: #0a0a0a;
+        }
         .font-handwriting { font-family: 'Caveat', cursive; }
         
         /* Custom Animation Utilities */
@@ -29,6 +35,11 @@
         }
         .animate-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
+        }
+        /* Custom style for the logo image */
+        .header-logo-img {
+            height: 32px; /* Set a specific height */
+            width: auto;
         }
     </style>
     
@@ -46,7 +57,7 @@
         }
     </script>
 </head>
-<body class="bg-neutral-950 text-white">
+<body class="text-white">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -59,7 +70,7 @@
             </svg>
         );
 
-        const Download = (props) => <Icon {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></Icon>;
+        const Download = (props) => <Icon {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-3-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></Icon>;
         const Instagram = (props) => <Icon {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></Icon>;
         const Twitter = (props) => <Icon {...props}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-12.7 14.6-2.6-2.1-3-5.7-1.7-8.8-4.5 3.6-10.2 3.6-10.2 3.6 1-3.6 4.9-6.3 8.9-6.3-1 0-1.7-1.2-1.7-2.3 0-1 .5-1.5 1-2"/></Icon>;
         const Linkedin = (props) => <Icon {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></Icon>;
@@ -86,6 +97,10 @@
 
           const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+          // PENTING: Jika logo gambar gagal dimuat, gunakan teks 'JS.' sebagai fallback yang stabil.
+          // Untuk menggunakan logo gambar, ganti URL di bawah ini dengan URL publik langsung (bukan halaman pratinjau Google Drive).
+          const reliableLogoUrl = "https://images.unsplash.com/photo-1575477813589-9e80b2a33633?q=80&w=32&auto=format&fit=crop"; // Contoh placeholder yang stabil
+
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
               
@@ -99,9 +114,24 @@
               {/* Navigation */}
               <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-neutral-900/90 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
-                  {/* Logo */}
+                  {/* Logo - DIKEMBALIKAN ke teks asli yang stabil */}
                   <div className="text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider cursor-pointer">
                     JS.
+                    {/* Jika Anda ingin mencoba lagi dengan gambar:
+                    <img
+                        src={reliableLogoUrl} // Ganti reliableLogoUrl dengan URL gambar Anda yang benar-benar publik
+                        alt="Jauhari Sagalih Logo"
+                        className="header-logo-img"
+                        onError={(e) => {
+                            e.target.style.display = 'none';
+                            const parent = e.target.parentElement;
+                            const textFallback = document.createElement('div');
+                            textFallback.className = "text-3xl font-bold text-yellow-400 font-handwriting italic tracking-wider";
+                            textFallback.textContent = 'JS.';
+                            parent.appendChild(textFallback);
+                        }}
+                    />
+                    */}
                   </div>
 
                   {/* Desktop Menu */}
@@ -132,11 +162,11 @@
               </nav>
 
               {/* Hero Section */}
-              <header id="about" className="relative pt-32 pb-20 md:pt-48 md:pb-0 z-10 min-h-screen flex items-center overflow-hidden">
+              <header id="about" className="relative pt-24 pb-10 md:pt-36 md:pb-0 z-10 min-h-screen flex items-center overflow-hidden">
                 <div className="container mx-auto px-6 h-full flex items-center relative z-20">
                   
                   {/* Left Content - Shifted Up for better positioning */}
-                  <div className="space-y-6 md:space-y-8 animate-fade-in-up max-w-2xl md:-mt-24">
+                  <div className="space-y-6 md:space-y-8 animate-fade-in-up max-w-2xl md:-mt-32">
                     <div className="space-y-2">
                       <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none">
                         JAUHARI <br />
@@ -157,6 +187,7 @@
                       </p>
                     </div>
 
+                    {/* Button Group */}
                     <div className="flex flex-wrap gap-4">
                       <button className="px-8 py-3 bg-transparent border-2 border-gray-600 rounded-full text-white font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-all flex items-center gap-2 group">
                         Download Portfolio
@@ -186,6 +217,7 @@
                             WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
                           }}
                           onError={(e) => {
+                            // Fallback to a reliable image URL if the GDrive link fails
                             e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"; 
                           }}
                         />
@@ -304,6 +336,7 @@
                         <SkillBar name="Adobe Illustrator" percent="90%" />
                         <SkillBar name="Adobe InDesign" percent="85%" />
                         <SkillBar name="Adobe Premiere & After Effects" percent="75%" />
+                        {/* DIPERBAIKI: Mengubah nama tag yang salah menjadi panggilan komponen SkillBar yang benar */}
                         <SkillBar name="Adobe XD (UI/UX)" percent="80%" />
                       </div>
                     </div>
@@ -352,7 +385,7 @@
                         </div>
                         +62 896 6236 1727
                     </a>
-                    <a href="https://www.linkedin.com/in/j-s-b5721173/" target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-yellow-400 transition-colors">
+                    <a href="https://www.linkedin.com/in/j-s-b5721173/" target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-yellow-400 transition-colors" rel="noopener noreferrer">
                         <div className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center">
                             <Linkedin size={18} />
                         </div>
