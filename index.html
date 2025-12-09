@@ -100,7 +100,7 @@
           // const googleDriveLogoId = '1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h';
           
           // MENGGUNAKAN PLACEHOLDER YANG DIJAMIN BERHASIL DIMUAT UNTUK MENGUJI FITUR GAMBAR
-          const logoSrc = "https://placehold.co/100x32/FFCC00/000000?text=LOGO"; 
+          const logoSrc = "js-01"; 
 
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
