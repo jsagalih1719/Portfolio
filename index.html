@@ -96,11 +96,10 @@
 
           const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-          // URL logo yang Anda berikan (untuk referensi)
-          // const googleDriveLogoId = '1sprx821_q8Jj8Y2GOwMe4EaVzgbr181h';
-          
-          // MENGGUNAKAN PLACEHOLDER YANG DIJAMIN BERHASIL DIMUAT UNTUK MENGUJI FITUR GAMBAR
+          // URL logo placeholder (digunakan di `<div className="text-3xl font-bold...")`)
           const logoSrc = "https://placehold.co/100x32/FFCC00/000000?text=LOGO"; 
+          // Link WhatsApp
+          const whatsappLink = "https://wa.me/6289662361727"; // Nomor: +62 896 6236 1727
 
           return (
             <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-yellow-400 selection:text-black overflow-x-hidden">
@@ -178,13 +177,26 @@
 
                     {/* Button Group */}
                     <div className="flex flex-wrap gap-4">
-                      <button className="px-8 py-3 bg-transparent border-2 border-gray-600 rounded-full text-white font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-all flex items-center gap-2 group">
+                      {/* Tautan Download Portfolio (sudah ada) */}
+                      <a 
+                        href="https://drive.google.com/file/d/1bhW8ifC1w4XYgYZFcobK9-TpLFD7kVne/view?usp=sharing" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-8 py-3 bg-transparent border-2 border-gray-600 rounded-full text-white font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-all flex items-center gap-2 group"
+                      >
                         Download Portfolio
                         <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-                      </button>
-                      <button className="px-8 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all shadow-[0_0_15px_rgba(250,204,21,0.3)]">
+                      </a>
+                      
+                      {/* DIPERBAIKI: Mengganti button menjadi tag a dengan link WhatsApp */}
+                      <a
+                        href={whatsappLink}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-8 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-300 transition-all shadow-[0_0_15px_rgba(250,204,21,0.3)]"
+                      >
                         Hire Me Now
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
